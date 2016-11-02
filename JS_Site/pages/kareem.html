@@ -1,29 +1,110 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Kareem - P5.js</title>
-	<script src="../javascript/kareem.js"></script>
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-	<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-	<script src="http://www.w3schools.com/lib/w3data.js"></script>
-</head>
-	<!-- removes any default padding and style. -->
-	<style> body {padding: 0; margin: 0;} </style>
-</head>
+	<head>
+		<style>
+			body {
+				background-color #666666;
+			}
 
-<body class="container body-content">
+			#canvas {
+				position: relative;
+				background: #999999;
+				//top: 0;
+				bottom: 1px;
+				//left: 0;
+				right: -100px;
+				margin:auto;				
+			}
+			#canvas2 {
+				position: relative;
+				background: #999999;
+				//top: 0;
+				bottom: -75px;
+				right: -200px;
+				margin:auto;
+			}
+			#canvas3 {
+				position: relative;
+				background: #999999;
+				//top: 0;
+				bottom: 1px;
+				right: -300px;
+				margin:auto;
+			}
+			#canvas4 {
+				position: relative;
+				background: #999999;
+				//top: 0;
+				bottom: -400px;
+				right: 175px;
+				margin:auto;
+			}
+			#canvas5 {
+				position: relative;
+				background: #999999;
+				//top: 0;
+				bottom: -400px;
+				right: -100px;
+				margin:auto;
+			}
+				
+			
+			#canvas6 {
+				position: relative;
+				background: #999999;
+				//top: 0;
+				bottom: -300px;
+				right: 265px;
+				margin:auto;
 
-		<!-- **************** Navigation Bar ******************** -->
-		<div w3-include-html="../components/navbar_pages.html"></div>
-		<!-- **************** End of Navigation Bar ******************** -->
+			}
+			#canvas7 {
+				position: relative;
+				background: #999999;
+				//top: 0;
+				bottom: -300px;
+				right: 135px;
+				margin:auto;
+			}
+			#canvas8 {
+				position: relative;
+				background: #999999;
+				//top: 0;
+				bottom: -240px;
+				right: 320px;
+				margin:auto;
+			}
+		</style>
+	</head>
 
+	<body>
+		<canvas id="canvas" width="100" height="100" style = "border: 2px solid #222222;">
+					HTML5 Canvas not supported
+		</canvas>
+
+		<canvas id="canvas2" width="100" height="100" style = "border: 2px solid #222222;">
+					HTML5 Canvas not supported
+		</canvas>
+		<canvas id="canvas3" width="100" height="100" style = "border: 2px solid #222222;">
+					HTML5 Canvas not supported
+		</canvas>
+		<canvas id="canvas4" width="75" height="75" style = "border: 2px solid #222222;">
+					HTML5 Canvas not supported
+		</canvas>
+
+		<canvas id="canvas5" width="75" height="75" style = "border: 2px solid #222222;">
+					HTML5 Canvas not supported
+		</canvas>
+		<canvas id="canvas6" width="75" height="75" style = "border: 2px solid #222222;">
+					HTML5 Canvas not supported
+		</canvas>
+		<canvas id="canvas7" width="75" height="75" style = "border: 2px solid #222222;">
+					HTML5 Canvas not supported
+		</canvas>
+		<canvas id="canvas8" width="75" height="75" style = "border: 2px solid #222222;">
+					HTML5 Canvas not supported
+		</canvas>
 	</body>
 
-	<script>
-		w3IncludeHTML();
-	</script>
-
+	<script src="../javascript/kareem.js"></script>
 </html>
