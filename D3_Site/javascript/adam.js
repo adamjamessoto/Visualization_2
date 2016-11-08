@@ -30,7 +30,8 @@ d3.json("../data/westbrookShots_15_16.json", function(error, shots) {
                               return "green";
                             else 
                               return "red";
-                         });
+                         })
+                         .style("opacity", .6);
 });
 
 function alterXCoord (x){
