@@ -1,53 +1,48 @@
-var bodySelection = d3.select("body");
+var jsonCircles = [
+  { "x_axis": 30, "y_axis": 30, "radius": 20, "color" : "green" },
+  { "x_axis": 70, "y_axis": 70, "radius": 20, "color" : "purple"},
+  { "x_axis": 110, "y_axis": 100, "radius": 20, "color" : "red"}];
 
-// circleRadii = [40, 20, 10]
- 
-// var svgContainer = bodySelection.append("svg")
-//                                 .attr("width", 600)
-//                                 .attr("height", 100);
- 
-//  var circles = svgContainer.selectAll("circle")
-//                             .data(circleRadii)
-//                             .enter()
-//                             .append("circle");
+var svgContainer = d3.select("body").append("svg")
+                                    .attr("width", 600)
+                                    .attr("height", 600);
 
-// var circleAttributes = circles
-//                         .attr("cx", 50)
-//                         .attr("cy", 50)
-//                         .attr("r", function (d) { return d; })
-//                         .style("fill", function(d) {
-//                           var returnColor;
-//                           if (d === 40) { returnColor = "green";}
-//                           else if (d === 20) { returnColor = "purple";}
-//                           else if (d === 10) { returnColor = "red"; }
-//                           return returnColor;
-                        // });
+svgContainer.append("rect")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .attr("fill", "black");
 
+d3.json("../data/westbrookShots_15_16.json", function(error, shots) {
+  if (error) throw error;
 
+  var circles = svgContainer.selectAll("circle")
+                            .data(shots)
+                            .enter()
+                            .append("circle");
 
+  var circleAttributes = circles
+                         .attr("cx", function (d) { return alterXCoord(d.x); })
+                         .attr("cy", function (d) { return alterYCoord(d.y); })
+                         .attr("r", function (d) { return 4; })
+                         .style("fill", function(d) {
+                            
+                            if (d.shot_made_flag === 1)
+                              return "green";
+                            else 
+                              return "red";
+                         });
+});
 
+function alterXCoord (x){
+  // change x coordinate (600, 600)
+  return (300 + x);
+};
 
- var spaceCircles = [30, 70, 110];
- 
- var svgContainer = bodySelection
-                      .append("svg")
-                      .attr("width", 200)
-                      .attr("height", 200);
- 
- var circles = svgContainer
-                  .selectAll("circle")
-                  .data(spaceCircles)
-                  .enter()
-                  .append("circle");
+function alterYCoord (y){
+  // change x coordinate (600, 600)
+  if (y <= 0)
+    return (500 + y);
 
-var circleAttributes = circles
-                        .attr("cx", function (d) { return d; })
-                        .attr("cy", function (d) { return d; })
-                        .attr("r", 20 )
-                        .style("fill", function(d) {
-                          var returnColor;
-                          if (d === 30) { returnColor = "green";}
-                          else if (d === 70) { returnColor = "purple";}
-                          else if (d === 110) { returnColor = "red"; }
-                          return returnColor;
-                        });
+  else
+    return (500 - y);
+};
