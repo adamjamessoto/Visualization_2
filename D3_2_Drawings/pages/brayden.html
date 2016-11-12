@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brayden - D3.js</title>
+    <style>
+    body {
+      background-color: black;
+    }
+    p {
+      color: white;
+    }
+    </style>
+  </head>
+
+  <body>
+  <p> WAX </p>
+  <!-- linke to d3 library -->
+  <script src="//d3js.org/d3.v3.min.js"> </script>
+  <!-- JS and d3 code between script tags-->
+  <script>
+
+  // random color generator
+  // http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript
+  function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++ ) {
+          color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+  }
+
+  // random number generator
+  // http://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // random float
+  // http://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
+  function getRandomArb(min, max) {
+      return Math.random() * (max - min) + min;
+  }
+
+  // See JS script
+  var w = 1200, h = 800;
+  var rMin = 25, rMax = 75;
+  var svg = d3.select("body").append("svg")
+    .attr("width", w)
+    .attr("height", h);
+
+  // Build multiple circles
+  var circleCount = 10
+  var cords = []
+  for (c=0; c<circleCount; c++) {
+    cords.push([getRandomInt(rMax, w-rMax), getRandomInt(rMax, h-rMax)])
+  }
+
+  //experimental
+
+  // var gen = d3.svg.circle()
+    // .cx( function(d) {return} )
+
+  // experiment over
+
+  // circle #1
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  // circle #2
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  // circle #3
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  // circle #4
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  // circle #5
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  // circle #6
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  // circle #7
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  // circle #8
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  // circle #9
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  // circle #10
+  svg.append("circle")
+    .attr("cx", getRandomInt(rMax, w-rMax))
+    .attr("cy", getRandomInt(rMax, h-rMax))
+    .attr("fill", getRandomColor())
+    .attr("r", getRandomArb(rMin, rMax));
+
+  </script>
+  </body>
+</html>
