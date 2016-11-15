@@ -1,6 +1,6 @@
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 1100 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 20, right: 20, bottom: 30, left: 40};
+var width = 1100 - margin.left - margin.right;
+var height = 500 - margin.top - margin.bottom;
 
 /* 
  * value accessor - returns the value to encode for a given data object.
@@ -10,20 +10,38 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
  */ 
 
 // setup x 
-var xValue = function(d) { return d.NRtg;}, // data -> value
-    xScale = d3.scale.linear().range([0, width-125]), // value -> display
-    xMap = function(d) { return xScale(xValue(d));}, // data -> display
-    xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+var xValue = function(d)
+              {
+                return d.NRtg;
+              }; // data -> value
+
+var xScale = d3.scale.linear().range([0, width-125]); // value -> display
+var xMap = function(d)
+            {
+              return xScale(xValue(d));
+            }; // data -> display
+var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
 // setup y
-var yValue = function(d) { return d["Rk"];}, // data -> value
-    yScale = d3.scale.linear().range([height, 0]), // value -> display
-    yMap = function(d) { return yScale(yValue(d));}, // data -> display
-    yAxis = d3.svg.axis().scale(yScale).orient("left");
+var yValue = function(d)
+              { 
+                return d["Rk"];
+              }; // data -> value
+
+var yScale = d3.scale.linear().range([height, 0]); // value -> display
+var yMap = function(d)
+            { 
+              return yScale(yValue(d));
+            }; // data -> display
+
+var yAxis = d3.svg.axis().scale(yScale).orient("left");
 
 // setup fill color
-var cValue = function(d) { return d.Team;},
-    color = d3.scale.category10();
+var cValue = function(d)
+              {
+                return d.Team;
+              };
+var color = d3.scale.category10();
 
 // add the graph canvas to the body of the webpage
 var svg = d3.select("body").append("svg")

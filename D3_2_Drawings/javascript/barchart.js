@@ -1,10 +1,10 @@
-var svg = d3.select("svg"),
-    margin = {top: 20, right: 20, bottom: 75, left: 40},
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom;
+var svg = d3.select("svg");
+var margin = {top: 20, right: 20, bottom: 75, left: 40};
+var width =+ svg.attr("width") - margin.left - margin.right;
+var height =+ svg.attr("height") - margin.top - margin.bottom;
 
-var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-    y = d3.scaleLinear().rangeRound([height, 0]);
+var x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
+var y = d3.scaleLinear().rangeRound([height, 0]);
 
 var g = svg
         .append("g")
@@ -28,7 +28,6 @@ d3.csv("../data/nba_stat.csv", function(d) {
       .attr("dx", "-.8em")
       .attr("dy", "-.55em")
       .attr("transform", "rotate(-90)" );
-
 
   g.append("g")
     .attr("class", "axis axis--y")
