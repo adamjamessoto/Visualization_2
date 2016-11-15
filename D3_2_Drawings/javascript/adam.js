@@ -1,47 +1,41 @@
-var width = 960,
-    height = 500;
+var w = 800, h = 600;
+// Generate dummy data in object form [ {"x" : val, "y" : val} ], domain 0-1.
+// note: array of objects
+var ptCount = 50;
+var dataSet = [];
+for(var i=0; i<ptCount; i++) {
+  dataSet.push({"x" : Math.random(), "y" : Math.random()});
+}
 
-var projection = d3.geo.craig()
-    .scale(200)
-    .center([0, 14])
-    .translate([width / 2, height / 2]);
+// define accessor functions to get coord data
+var plotFunction = d3.svg.line()
+  // manually multiply data to scale
+  .x(function(d) { return d.x*w; }) 
+  .y(function(d) { return d.y*h; })
+  .interpolate("linear"); // we can change this for alternative plots
 
-var graticule = d3.geo.graticule()
-    .step([5, 5])
-    .extent([[-179, -90], [179, 90]])
-    .precision(1);
+// set up svg
+var svgContainer = d3
+                    .select("body")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h);
 
-var lines = graticule.lines(),
-    xLines = lines.filter(function(d) { return d.coordinates[0][0] === d.coordinates[1][0]; }),
-    yLines = lines.filter(function(d) { return d.coordinates[0][1] === d.coordinates[1][1]; });
+// plot some data
+var plot = svgContainer
+              .append("path")
+              .attr("d", plotFunction(dataSet)) // access data
+              .attr("stroke", "orange")
+              .attr("stroke-width", 4)
+              .attr("fill", "none");
 
-var canvas = d3.select("body").append("canvas")
-    .attr("width", width)
-    .attr("height", height);
+var totalLength = plot.node().getTotalLength();
 
-var context = canvas.node().getContext("2d");
-
-var path = d3.geo.path()
-    .projection(projection)
-    .context(context);
-
-context.lineWidth = 2;
-
-d3.timer(function(elapsed) {
-  projection.parallel(Math.sin((elapsed % 10000) / 10000 * Math.PI) * 25);
-  context.clearRect(0, 0, width, height);
-
-  yLines.forEach(function(line) {
-    context.strokeStyle = d3.hsl(line.coordinates[0][1] - 90, 1, .5) + "";
-    context.beginPath();
-    path(line);
-    context.stroke();
-  });
-
-  xLines.forEach(function(line) {
-    context.strokeStyle = d3.hsl(line.coordinates[0][0] / 2 + 180, 1, .5) + "";
-    context.beginPath();
-    path(line);
-    context.stroke();
-  });
-});
+plot
+  .attr("stroke-dasharray", totalLength + " " + totalLength)
+  .attr("stroke-dashoffset", totalLength)
+  .transition()
+  .duration(2000)
+  .ease("linear")
+  .attr("stroke-dashoffset", 0);
+  
