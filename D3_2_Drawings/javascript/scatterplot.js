@@ -11,7 +11,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 40},
 
 // setup x 
 var xValue = function(d) { return d.NRtg;}, // data -> value
-    xScale = d3.scale.linear().range([0, width]), // value -> display
+    xScale = d3.scale.linear().range([0, width-125]), // value -> display
     xMap = function(d) { return xScale(xValue(d));}, // data -> display
     xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
@@ -56,29 +56,30 @@ d3.csv("../data/nba_stat.csv", function(error, data) {
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
-    .append("text")
+      .append("text")
       .attr("class", "label")
-      .attr("x", width)
-      .attr("y", -6)
-      .style("text-anchor", "end")
+      .attr("x", width / 2)
+      .attr("y", -5)
+      .style("text-anchor", "start")
       .text("Net Rating adjusted");
 
   // y-axis
   svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
-    .append("text")
+      .append("text")
       .attr("class", "label")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".71em")
-      .style("text-anchor", "end")
+      .style("text-anchor", "start")
       .text("Ranking");
 
   // draw dots
   svg.selectAll(".dot")
       .data(data)
-    .enter().append("circle")
+      .enter()
+      .append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
       .attr("cx", xMap)
@@ -102,13 +103,14 @@ d3.csv("../data/nba_stat.csv", function(error, data) {
   // draw legend
   var legend = svg.selectAll(".legend")
       .data(color.domain())
-    .enter().append("g")
+      .enter()
+      .append("g")
       .attr("class", "legend")
       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
   // draw legend colored rectangles
   legend.append("rect")
-      .attr("x", width - 18)
+      .attr("x", width)
       .attr("width", 18)
       .attr("height", 18)
       .style("fill", color);
