@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Donut Flow </title>
+    <style>
+    body {
+      background-color: #000000;
+    }
+    h1 {
+      color: white;
+      font-size: 50px;
+      font-family: times;
+    }
+    .legend{
+      font-size: 20px;
+      font-family: times;
+      color:white;
+    }
+    </style>
+  </head>
+
+  <body>
+  <!-- linke to d3 library -->
+  <script src="//d3js.org/d3.v3.min.js"> </script>
+  <h1> Division Wins During Each Teams Past 10 Games <h1>
+  <!-- JS and d3 code between script tags-->
+  <script>
+  var w = 1000, h = 1000 ;
+  var svg = d3.select("body").append("svg")
+    .attr("width", w)
+    .attr("height", h)
+
+  // Donut Plot with Arcs
+  var donut2Group = svg.append("g") // uses SVG group element
+    .attr("transform", "translate(500,400)");
+  var divWins = [
+    {"Division":"Atlantic","Wins":20, "colorCode": "#C10819"}, // red
+    {"Division":"Central", "Wins":28,  "colorCode": "#EEF203"}, // yellow
+    {"Division":"Northwest","Wins":26,  "colorCode": "#012594"}, // blue
+    {"Division":"Pacific", "Wins":30,  "colorCode": "#01941C"}, // green
+    {"Division":"Southeast","Wins":21,  "colorCode": "#4A0194"}, //purple
+    {"Division":"Southwest", "Wins":19,  "colorCode": "#DE7200"} // orange
+  ];
+
+
+  var arc = d3.svg.arc() // arc path for 3 donut charts
+    .outerRadius(200)
+    .innerRadius(50);
+  var pie = d3.layout.pie() // unsorted pie layout manager
+    .sort(null)
+    .value(function(d) {
+      return d.Wins;
+    })
+    .padAngle(.01);
+  var path = donut2Group.selectAll("path")
+    .data(pie(divWins))
+    .enter()
+    .append("path")
+    .attr("d", arc)
+    .style("fill", function(d,i) { return d.data.colorCode; })
+  </script>
+  </body>
+</html>
