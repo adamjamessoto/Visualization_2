@@ -1,0 +1,110 @@
+{"name": "Westbrook",
+  "children": [
+    {"name": "Atlanta Hawks",
+      "children": [
+        {"name": "Qtr 1",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 2",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 3",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 4",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        }
+      ]
+    },
+    {"name": "Boston Celtics",
+      "children": [
+        {"name": "Qtr 1",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 2",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 3",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 4",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        }
+      ]
+    },
+    {"name": "Brooklyn Nets",
+      "children": [
+        {"name": "Qtr 1",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 2",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 3",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 4",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        }
+      ]
+    },
+    {"name": "Charlotte Hornets",
+      "children": [
+        {"name": "Qtr 1",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 2",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        },
+        {"name": "Qtr 3",
+          "children": [
+            {"name": "2PT FG"},
+            {"name": "3PT FG"}
+          ]
+        }
+      ]
+    }
+  ]
+}
