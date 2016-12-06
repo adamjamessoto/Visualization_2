@@ -29,7 +29,7 @@ var svg = d3
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Loading our data file
-d3.json("../Data/nba_test.json", 
+d3.json("../Data/nba.json", 
     function(error, NBA) {
       if (error) throw error;
 
@@ -85,13 +85,12 @@ function update(source) {
                       )
                       .on("click", click);
 
-  nodeEnter.append("circle")
-            .attr("r", 1e-6)
-            .style("fill", 
-              function(d) {
-                return d._children ? "lightsteelblue" : "#fff";
-              }
-            );
+  nodeEnter.append("image")
+              .attr("xlink:href", "../Images/basketball.png")
+              .attr("x", "-8px")
+              .attr("y", "-8px")
+              .attr("width", "17px")
+              .attr("height", "17px");
 
   nodeEnter.append("text")
             .attr("x", 
@@ -105,12 +104,12 @@ function update(source) {
                 return d.children || d._children ? "end" : "start"; 
               }
             )
+            .style("font-weight", "bold")
             .text(
               function(d) {
                 return d.name;
               }
-            )
-            .style("fill-opacity", 1e-6);
+            );
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
@@ -121,16 +120,8 @@ function update(source) {
                           }
                         );
 
-  nodeUpdate.select("circle")
-            .attr("r", 4.5)
-            .style("fill", 
-              function(d) { 
-                  return d._children ? "lightsteelblue" : "#fff"; 
-              }
-            );
-
   nodeUpdate.select("text")
-            .style("fill-opacity", 1);
+            .style("font-weight", "bold");
 
   // Transition exiting nodes to the parent's new position.
   var nodeExit = node.exit()
