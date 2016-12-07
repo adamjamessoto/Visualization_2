@@ -29,7 +29,7 @@ var svg = d3
           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // Loading our data file
-d3.json("../Data/nba.json", 
+d3.json("../data/nba.json", 
     function(error, NBA) {
       if (error) throw error;
 
@@ -37,6 +37,7 @@ d3.json("../Data/nba.json",
       root.x0 = height / 2;
       root.y0 = 0;
 
+      // function to hide child nodes
       function collapse(d) {
         if (d.children) {
           d._children = d.children;
@@ -45,6 +46,7 @@ d3.json("../Data/nba.json",
         }
       }
 
+      // hiding the child nodes
       root.children.forEach(collapse);
       update(root);
     }
@@ -74,7 +76,7 @@ function update(source) {
                   }
                 );
 
-  // Enter any new nodes at the parent's previous position.
+  // Add children nodes from parent's previous position
   var nodeEnter = node.enter()
                       .append("g")
                       .attr("class", "node")
@@ -85,6 +87,7 @@ function update(source) {
                       )
                       .on("click", click);
 
+  // Add image to the nodes
   nodeEnter.append("image")
               .attr("xlink:href", "../Images/basketball.png")
               .attr("x", "-8px")
@@ -92,6 +95,7 @@ function update(source) {
               .attr("width", "17px")
               .attr("height", "17px");
 
+  // Add text to the nodes
   nodeEnter.append("text")
             .attr("x", 
               function(d) {
@@ -111,7 +115,7 @@ function update(source) {
               }
             );
 
-  // Transition nodes to their new position.
+  // Expand child nodes to new position
   var nodeUpdate = node.transition()
                         .duration(duration)
                         .attr("transform", 
@@ -120,10 +124,7 @@ function update(source) {
                           }
                         );
 
-  nodeUpdate.select("text")
-            .style("font-weight", "bold");
-
-  // Transition exiting nodes to the parent's new position.
+  // Retract child nodes to the parent's position
   var nodeExit = node.exit()
                       .transition()
                       .duration(duration)
@@ -133,12 +134,6 @@ function update(source) {
                         }
                       )
                       .remove();
-
-  nodeExit.select("circle")
-          .attr("r", 1e-6);
-
-  nodeExit.select("text")
-          .style("fill-opacity", 1e-6);
 
   // Update the links…
   var link = svg.selectAll("path.link")
@@ -176,7 +171,7 @@ function update(source) {
       )
       .remove();
 
-  // Stash the old positions for transition.
+  // Store old position for transition
   nodes.forEach(
           function(d) {
             d.x0 = d.x;
@@ -185,7 +180,7 @@ function update(source) {
         );
 }
 
-// Toggle children on click.
+// Toggle on click
 function click(d) {
   if (d.children) {
     d._children = d.children;
